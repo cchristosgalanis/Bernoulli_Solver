@@ -1,0 +1,5 @@
+*.exe
+.venv
+*.csv
+__pycache__/
+*.py
