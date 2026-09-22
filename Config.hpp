@@ -11,14 +11,18 @@ namespace Config {
     constexpr double alpha = 2.0; // bernoulli power
     constexpr double omega = 1.0; // parameter for different frequencies
 
+    /*
+        used different Equation Families, such as periodic functions (cosine and sine), exponential equations (exp(-x)) and polynomial functions
+    */
+
     // functions P(x) & Q(x)
     static double P(double x){
 
-        return std::cos(omega * x);
+        return std::pow(x,omega);
     }
 
     static double Q(double x){
-        return std::sin(omega * x);
+        return x;
     }
 }
 
