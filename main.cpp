@@ -53,23 +53,22 @@ int main(){
     //     std::cout << "========================\n";
     // }
 
-    std::ofstream out_file("bernoulli_polynomial_results.csv");
-    out_file << "x,Euler,RK4\n";
+    // std::ofstream out_file("bernoulli_polynomial_results.csv");
+    // out_file << "x,Euler,RK4\n";
 
-    for (int i = 0; i < N_points; i++) {
-        // Φρουρός: Αν και οι δύο λύσεις μηδενιστούν (λόγω ορίου/ασύμπτωτης), σταματάμε την εγγραφή
-        if (i > 0 && psi[i] == 0.0 && psi_RK[i] == 0.0) {
-            break;
-        }
+    // for (int i = 0; i < N_points; i++) {
+    //     if (i > 0 && psi[i] == 0.0 && psi_RK[i] == 0.0) {
+    //         break;
+    //     }
 
-        out_file << grid[i] << ","
-                 << psi[i] << ","
-                 << psi_RK[i] << "\n";
-    }
+    //     out_file << grid[i] << ","
+    //              << psi[i] << ","
+    //              << psi_RK[i] << "\n";
+    // }
     
-    out_file.close();
+    // out_file.close();
 
-    std::cout << "\n[Success] Polynomial data successfully exported to 'bernoulli_polynomial_results.csv'\n";
+    // std::cout << "\n[Success] Polynomial data successfully exported to 'bernoulli_polynomial_results.csv'\n";
 
 //
 
