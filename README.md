@@ -1,56 +1,25 @@
-# Bernoulli ODE Numerical Solver (C++ & Python)
+# Bernoulli ODE Numerical Solver (C++)
 
-A modular, high-performance C++ framework designed for numerical solution and stability analysis of Bernoulli differential equations, paired with a Python visualization suite.
-
----
-
-## 📐 Mathematical Background
-The solver targets non-linear ordinary differential equations of the Bernoulli form:
-
-$$\frac{dy}{dx} + P(x)y = Q(x)y^\alpha$$
-
-The framework implements two primary numerical methods:
-1. **Euler's Method** (First-order approximation)
-2. **Runge-Kutta 4th Order (RK4)** (High-precision fourth-order approximation)
+A modular C++ framework designed for the numerical solution and stability analysis of Bernoulli differential equations, featuring Euler and Runge-Kutta 4th Order (RK4) methods, paired with a Python visualization suite.
 
 ---
 
-## 🗂️ Project Structure
-```text
-bernoulli-ode-solver/
-│
-├── Config.hpp                # Central configuration (Parameters, P(x), Q(x))
-├── BernoulliSolver.hpp       # Class declaration & function interfaces
-├── BernoulliSolver.cpp       # Core numerical algorithms & stability guardians
-├── main.cpp                  # Execution driver & CSV data export
-├── analyze_results.py        # Python visualization & error analysis script
-└── .gitignore                # Git exclusion rules
+## 🚀 How to Use & Customize
 
-## 🚀 Getting Started & Usage
+* **Parameter and Function Configuration:** You can easily test custom function models by modifying the parameters, grid bounds, and the mathematical functions $P(x)$ and $Q(x)$ directly inside the configuration file.
+* **Analytical Benchmarking:** If the exact closed-form analytical solution of your differential equation is known, you can implement it within the analytical method routine. This allows the framework to automatically calculate absolute errors for precise method comparison. If no analytical solution is available (for complex or novel systems), you can simply bypass this step and use the high-precision RK4 output as your reference.
+* **Execution & Visualization:** Compile and run the C++ source files to export your simulation data into a CSV file, then run the Python visualization script to generate clean comparative performance plots.
 
-### 1. Customizing the Problem (`Config.hpp`)
-To test custom function families or change simulation parameters, modify **only** the `Config.hpp` file without touching the core algorithms. 
+---
 
-Open `Config.hpp` and adjust:
-* **Grid Bounds & Resolution:** `x_start`, `x_end`, `N_points`
-* **Initial Conditions & Parameters:** `y_0`, `alpha`, `omega`
-* **Mathematical Functions:** Define your custom $P(x)$ and $Q(x)$ models inside their respective static methods using standard C++ `<cmath>` syntax:
+## 🛡️ Stability Guardians
+Both numerical engines include built-in safety checks that detect mathematical singularities, asymptotes, or infinite explosions, safely terminating the execution to maintain data integrity.
 
-```cpp
-namespace Config {
-    constexpr double x_start = 1.0;
-    constexpr double x_end = 10.0;
-    constexpr int N_points = 100;
-    constexpr double y_0 = 2.0;
-    constexpr double alpha = 2.0;
-    constexpr double omega = 1.0;
+---
 
-    static double P(double x) {
-        return std::sin(omega * x); // Example: Periodic function
-    }
-
-    static double Q(double x) {
-        return std::cos(omega * x); // Example: Periodic function
-    }
-}
-
+## 📊 Tested Function Families
+The framework has been successfully validated across multiple mathematical function families:
+* **Algebraic / Singular Models**
+* **Periodic (Trigonometric) Systems**
+* **Exponential Families**
+* **Polynomial Families**
